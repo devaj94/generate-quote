@@ -1,0 +1,48 @@
+.quote-wrap{
+    padding: 5vw 0;
+}
+.mat-stepper-horizontal{
+    background: transparent;
+}
+.quote-wrap .mat-horizontal-stepper-header-container{
+    display: none !important;
+}
+.quote-wrap  .mat-horizontal-content-container{
+    padding: 2vw 0 0;
+    color: #FFF;
+}
+.quote-wrap h1{
+    font-weight: 600;
+    font-size: 2.4vw;
+    margin-bottom: 2vw;
+}
+/* Border */
+.quote-wrap .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+}
+.quote-wrap .mat-focused.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #3f51bf;
+}
+.quote-wrap .mat-focused.mat-form-field-invalid.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #f44336;
+}
+  /* Font color */
+.quote-wrap input.mat-input-element, .quote-wrap .mat-form-field-label {
+    color: white;
+}
+.quote-wrap .mat-form-field-appearance-fill .mat-form-field-flex{
+    background-color: transparent;
+}
+.quote-wrap input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+.mat-form-field{
+    width: 50%;
+}
+.quote-wrap .mat-select-value{
+    color: #FFF;
+}
+.quote-wrap .mat-form-field-label-wrapper {
+    top: -1vw;
+    padding-top: 1vw;
+}

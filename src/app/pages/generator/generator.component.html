@@ -1,0 +1,50 @@
+<section class="quote-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Get a quote!</h1>
+                <mat-horizontal-stepper linear #stepper>
+                    <mat-step [stepControl]="servicesGroup" [editable]="isEditable">
+                      <form [formGroup]="servicesGroup">
+                        <ng-template matStepLabel>Fill out your name</ng-template>
+                          <mat-form-field appearance="outline">
+                            <mat-label>What are the services you require?</mat-label>
+                            <mat-select formControlName="servicesCtrl" multiple required #servicesDropDown>
+                              <mat-option *ngFor="let service of servicesList" [value]="service.value">{{service.option}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                          <div *ngIf="isWebSelected()">
+                            <mat-checkbox class="example-margin">Disabled</mat-checkbox>
+                          </div>                          
+                        <div>
+                          <button mat-flat-button matStepperNext color="primary" (click)="logEvent($event)">Next</button>
+                        </div>
+                      </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+                      <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Fill out your address</ng-template>
+                        <mat-form-field>
+                          <mat-label>Address</mat-label>
+                          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                                 required>
+                        </mat-form-field>
+                        <div>
+                          <button mat-button matStepperPrevious>Back</button>
+                          <button mat-flat-button matStepperNext color="primary">Next</button>
+                        </div>
+                      </form>
+                    </mat-step>
+                    <mat-step>
+                      <ng-template matStepLabel>Done</ng-template>
+                      <p>You are now done.</p>
+                      <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button (click)="stepper.reset()">Reset</button>
+                      </div>
+                    </mat-step>
+                  </mat-horizontal-stepper>
+            </div>
+        </div>
+    </div>
+</section>
