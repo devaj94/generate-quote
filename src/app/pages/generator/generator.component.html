@@ -5,6 +5,7 @@
                 <h1>Get a quote!</h1>
                 <mat-horizontal-stepper linear #stepper>
                     <mat-step [stepControl]="servicesGroup" [editable]="isEditable">
+                        <h2>Let's start with a few basic questions</h2>
                       <form [formGroup]="servicesGroup">
                         <ng-template matStepLabel>Fill out your name</ng-template>
                           <mat-form-field appearance="outline">
@@ -13,33 +14,97 @@
                               <mat-option *ngFor="let service of servicesList" [value]="service.value">{{service.option}}</mat-option>
                             </mat-select>
                           </mat-form-field>
-                          <div *ngIf="isWebSelected()">
-                            <mat-checkbox class="example-margin">Disabled</mat-checkbox>
-                          </div>                          
+                          <div *ngIf="isWebSelected()" class="redesignCheck">
+                            <mat-checkbox class="example-margin" color="accent">Is this a redesign of your existing website?</mat-checkbox>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Existing Website URL</mat-label>
+                                <input matInput placeholder="" type="url" required>
+                              </mat-form-field>
+                          </div>
+                          <div *ngIf="isWebSelected()" class="redesignCheck">
+                            <mat-checkbox class="example-margin" color="accent">Is this a redesign of your existing logo?</mat-checkbox>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Link to the logo</mat-label>
+                                <input matInput placeholder="Google Drive, Dropbox etc." type="url" required>
+                            </mat-form-field>
+                          </div> 
                         <div>
-                          <button mat-flat-button matStepperNext color="primary" (click)="logEvent($event)">Next</button>
+                          <button mat-flat-button matStepperNext (click)="logEvent($event)">Next</button>
                         </div>
                       </form>
                     </mat-step>
                     <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+                        <h2>Just a few more questions</h2>
                       <form [formGroup]="secondFormGroup">
-                        <ng-template matStepLabel>Fill out your address</ng-template>
-                        <mat-form-field>
-                          <mat-label>Address</mat-label>
-                          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                                 required>
+                        <ng-template matStepLabel>A bit about yourself</ng-template>
+                        <mat-form-field appearance="outline">
+                          <mat-label>How would someone "Google" you?</mat-label>
+                          <input matInput formControlName="secondCtrl" placeholder="Ex. Dental Care in New York" required>
                         </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>What’s your timeframe for development/ What’s the target launch date? </mat-label>
+                            <mat-select multiple required #timeFrameDropdown>
+                                <mat-option *ngFor="let time of timeFrame" [value]="time.value">{{time.option}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>How many pages have you estimated for the website?</mat-label>
+                            <mat-select multiple required #timeFrameDropdown>
+                                <mat-option *ngFor="let page of estimatedPages" [value]="page.value">{{page.option}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Any additional information you'd like to provide about the project?</mat-label>
+                                <input matInput type="text" placeholder="" required>
+                            </mat-form-field>
                         <div>
-                          <button mat-button matStepperPrevious>Back</button>
-                          <button mat-flat-button matStepperNext color="primary">Next</button>
+                          <button mat-flat-button matStepperPrevious>Back</button>
+                          <button mat-flat-button matStepperNext >Next</button>
                         </div>
                       </form>
                     </mat-step>
+                    <!-- Third Step -->
+                    <mat-step [stepControl]="" [editable]="isEditable">
+                        <h2>Almost Done</h2>
+                      <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>A bit about yourself</ng-template>
+                        <mat-form-field appearance="outline">
+                          <mat-label>Fullname</mat-label>
+                          <input matInput type="text" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Your Email </mat-label>
+                            <input matInput type="email" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Do you have an estimated budget?</mat-label>
+                            <mat-select multiple required #timeFrameDropdown>
+                                <mat-option *ngFor="let budget of estimatedBudget" [value]="budget.value">${{budget.option}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Do you have any questions for us? </mat-label>
+                            <input matInput type="text" required>
+                        </mat-form-field>
+                        <div class="final_stepper">
+                            <mat-label>How would you like to hire us? </mat-label>
+                            <mat-radio-group aria-label="Hire a developer" appearance="outline">
+                                <mat-radio-button value="1">Hire a dedicated developer</mat-radio-button>
+                                <mat-radio-button value="2">Hourly basis</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div>
+                          <button mat-flat-button matStepperPrevious>Back</button>
+                          <button mat-flat-button matStepperNext>Next</button>
+                        </div>
+                      </form>
+                    </mat-step>
+                    <!-- Third Step Ends -->
                     <mat-step>
                       <ng-template matStepLabel>Done</ng-template>
                       <p>You are now done.</p>
                       <div>
-                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-flat-button matStepperPrevious>Back</button>
                         <button mat-button (click)="stepper.reset()">Reset</button>
                       </div>
                     </mat-step>

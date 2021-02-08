@@ -35,7 +35,39 @@ export class GeneratorComponent implements OnInit {
       'option': 'Print & Logo Design'
     },
   ];
-
+  timeFrame: any[] = [
+    {
+      'value': 0,
+      'option': 'Haven\'t Decided'
+    },
+    {
+      'value': 1,
+      'option': 'ASAP'
+    },
+    {
+      'value': 2,
+      'option': 'Within 1-3 months'
+    },
+    {
+      'value': 3,
+      'option': 'Not in a rush'
+    },
+  ];
+  estimatedPages = [
+    {
+      'value': 0,
+      'option': '1-5'
+    },
+    {
+      'value': 1,
+      'option': '5-10'
+    },
+    {
+      'value': 3,
+      'option': '10+'
+    }
+  ];
+  estimatedBudget = [{'value': 0,'option': '50-100'}, {'value': 1, 'option': '100-300'}, {'value': 3,'option': '300-500'}, {'value': 4, 'option': '500+'}];
   constructor(@Inject(DOCUMENT) private document: Document, private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {

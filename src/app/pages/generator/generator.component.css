@@ -1,6 +1,9 @@
 .quote-wrap{
     padding: 5vw 0;
 }
+h1, h2, h3, h4, h5, h6{
+    text-transform: uppercase;
+}
 .mat-stepper-horizontal{
     background: transparent;
 }
@@ -36,8 +39,11 @@
 .quote-wrap input::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.3) !important;
 }
-.mat-form-field{
+.quote-wrap .mat-stepper-horizontal{
     width: 50%;
+}
+.mat-form-field{
+    width: 100%;
 }
 .quote-wrap .mat-select-value{
     color: #FFF;
@@ -45,4 +51,30 @@
 .quote-wrap .mat-form-field-label-wrapper {
     top: -1vw;
     padding-top: 1vw;
+}
+.redesignCheck .mat-checkbox{
+    margin-bottom: 16px;
+}
+.quote-wrap .mat-checkbox-frame{
+    border-color: #FFF;
+}
+.final_stepper{
+    margin-bottom: 16px;
+}
+.final_stepper mat-label{
+    margin-bottom: 12px;
+    display: block;
+}
+.quote-wrap .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;  
+}
+.quote-wrap .mat-flat-button:first-of-type{
+    margin-right: 16px;
+}
+@media(min-width: 1200px){
+    .mat-typography h1{
+        font-size: 4vw;
+        margin-bottom: 2vw;
+        line-height: normal;
+    }
 }
